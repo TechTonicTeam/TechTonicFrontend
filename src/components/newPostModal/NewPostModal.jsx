@@ -6,7 +6,7 @@ import {createPost} from "../../API/getPosts";
 import getImage from "../../utils/getImage";
 const NewPostModal = ({activeModal, setActiveModal, setPost}) => {
     const themePost = useInput("")
-    const [image, setImage] = useState(null)
+    const [images, setImages] = useState(null)
     const [file, setFile] = useState(null)
     const user = useSelector(state => state.authLevel)
     const date = new Date()
@@ -19,15 +19,22 @@ const NewPostModal = ({activeModal, setActiveModal, setPost}) => {
     }, [activeModal]);
 
     const setImageInput = (e) => {
-        if (e.target.files[0]) {
-            setImage(URL.createObjectURL(e.target.files[0]))
-            setFile(e.target.files[0])
+        if (e.target.files.length > 5) {
+            alert('Можно выбрать максимум 5 фотографий')
+        } else {
+            if (Object.hasOwn(e.target.files, '0')) {
+                const imagesInEvent = e.target.files
+                setImages(Object.values(imagesInEvent).map(file => URL.createObjectURL(file)))
+                setFile([...imagesInEvent])
+            }
         }
     }
     const submitForm = async (e) => {
         e.preventDefault()
         const formData = new FormData()
-        formData.append('file', file)
+        if (file) {
+            file.map(file => formData.append('files', file))
+        }
         formData.append('title', themePost.value)
         formData.append('timestamp', date.toLocaleString('en-US', {timeZone: 'Europe/Moscow'}))
         formData.append('user_id', user.id)
@@ -51,11 +58,13 @@ const NewPostModal = ({activeModal, setActiveModal, setPost}) => {
                     onChange={themePost.onChange}
                 />
                 <div className={styles.imageWrapper}>
-                    <img
-                        className={styles.choseImage}
-                        src={image}
-                        alt=""
-                    />
+                    {
+                        images
+                            ?
+                            images.map(image => (<img className={styles.choseImage} src={image} alt="#"/>))
+                            :
+                            <></>
+                    }
                 </div>
                 <div className={styles.bottomBar}>
                     <div className={styles.clipWrapper}>
@@ -64,6 +73,7 @@ const NewPostModal = ({activeModal, setActiveModal, setPost}) => {
                             type="file"
                             accept=".jpg, .png, .jpeg, .gif, .svg"
                             onChange={(e) => setImageInput(e)}
+                            multiple
                         />
                     </div>
                     <img alt='' src={getImage('send')} onClick={(e) => submitForm(e)}/>

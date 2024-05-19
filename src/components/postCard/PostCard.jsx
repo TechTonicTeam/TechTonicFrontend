@@ -6,6 +6,10 @@ import {useSelector} from "react-redux";
 import {timestampPost} from "../../utils/getDate";
 import TwoCommentList from "../twoCommentList/TwoCommentList";
 import {Link} from "react-router-dom";
+import Swiper from 'swiper';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination } from 'swiper/modules';
 const PostCard = ({post, openPopComm, commentButton}) => {
     const api_url = 'http://localhost:5000/'
     const [timestamp, setTimestamp] = useState('')
@@ -21,6 +25,16 @@ const PostCard = ({post, openPopComm, commentButton}) => {
             await decrementLike({post_id: post.id, user_id: userId})
         }
     }
+
+    new Swiper('.swiper', {
+        modules: [Pagination],
+        slidesPerView: 1,
+        spaceBetween: 10,
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    });
 
     useEffect(() => {
         setTimestamp(timestampPost(post.timestamp))
@@ -57,24 +71,41 @@ const PostCard = ({post, openPopComm, commentButton}) => {
             </div>
 
             <div className={styles.blockPictures}>
-                <img
-                    src={post.picture ? api_url + 'uploads/' + post.picture : ''}
-                    alt=""
-                    loading="lazy"
-                />
+
+                <div className="swiper">
+                    <div className="swiper-wrapper">
+                        {
+                            post.pictures
+                                ?
+                                (post.pictures.map(pic => (
+                                    <div className='swiper-slide' key={pic.id}>
+                                        <img
+                                            src={pic.picture ? api_url + 'uploads/' + pic.picture : ''}
+                                            alt=""
+                                            loading="lazy"
+                                            className={styles.postImage}
+                                        />
+                                    </div>
+                                )))
+                                :
+                                (<></>)
+                        }
+                    </div>
+                    <div className="swiper-pagination"></div>
+                </div>
             </div>
 
             <div className={styles.likeCommentBlock}>
-                    <div
-                        className={styles.likeBlock}
-                        onClick={setLike}
-                    >
-                        <img
-                            className={styles.like}
-                             src={getImage("like")} alt=""
-                        />
-                        <img
-                            className={likeActive ? styles.likeFill + " " + styles.likeFillActive : styles.likeFill}
+                <div
+                    className={styles.likeBlock}
+                    onClick={setLike}
+                >
+                    <img
+                        className={styles.like}
+                        src={getImage("like")} alt=""
+                    />
+                    <img
+                        className={likeActive ? styles.likeFill + " " + styles.likeFillActive : styles.likeFill}
                             src={getImage("likeFill")}
                             alt=""
                         />

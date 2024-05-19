@@ -16,6 +16,7 @@ const FilterDropDown = () => {
         } else {
             return tagList.filter(item => item.toLowerCase().includes(value.value.toLowerCase()))
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value.value])
 
     const handleTagSelection = (tag) => {
