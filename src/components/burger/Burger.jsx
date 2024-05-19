@@ -7,7 +7,8 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {changeSwitcher} from "../../store/slices/switchTape";
 import {logoutUser} from "../../API/getUsers";
 
-const Burger = ({active, setActive}) => {
+
+const Burger = ({active, setActive, handleClose}) => {
     const user = useSelector(state => state.authLevel)
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -68,7 +69,7 @@ const Burger = ({active, setActive}) => {
                             src={getImage("report")}
                             alt=""
                         />
-                        <span>Связь с руководством</span>
+                        <span onClick={handleClose}>Связь с руководством</span>
                     </li>
                 </ul>
 

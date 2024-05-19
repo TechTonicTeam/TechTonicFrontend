@@ -1,0 +1,131 @@
+.toSendWrapper {
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    display: flex;
+    width: 100dvw;
+    height: 100dvh;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+}
+
+.toSendBlock{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    background-color: #ECECEC;
+}
+
+.toSendHead{
+    font-family: "GardensC", sans-serif;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 6vh;
+    padding: 0 13px;
+    background-color: #D9D9D9;
+}
+
+.toSendExit:before, .toSendExit:after {
+    position: absolute;
+    right: 17px;
+    top: 18px;
+    content: ' ';
+    height: 17px;
+    width: 1px;
+    background-color: #333;
+    cursor: pointer;
+  }
+.toSendExit:before {
+  transform: rotate(45deg);
+}
+.toSendExit:after {
+  transform: rotate(-45deg);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.toSendInputTheme, .toSendInputText {
+    padding: 0 13px;
+    font-family: "Forum", serif;
+    text-align: justify;
+    border: none;
+    border-bottom: 1px solid #D9D9D9;
+    background-color: #ECECEC;
+    margin-bottom: 20px;
+    width: 99%;
+    resize: none;
+    outline: none;
+}
+
+.toSendInputTheme {
+    height: 4vh;
+}
+
+.toSendInputText{
+    height: 20vh;
+    margin: 0;
+}
+
+.choseImageDiv{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.choseImage{
+    width: 5vh;
+    height: 5vh;
+    margin: 11px 20px 7px 13px;
+    object-fit: cover;
+}
+
+.choseImageName{
+    font-family: "Forum", serif;
+}
+
+.toSendButAttach, .toSendButSend {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+}
+
+.toSendSendImage {
+    height: 32px;
+    width: 32px;
+}
+
+.toSendAttach, .toSendSend {
+    cursor: pointer;
+    position: relative;
+    height: 25px;
+    width: 25px;
+}
+
+.toSendAttachImage{
+    pointer-events: none;
+    height: 100%;
+    width: 20px;
+}
+
+.toSendButton{
+    border-top: 1px solid #D9D9D9;
+    width: calc(100% - 26px);
+    padding: 10px 13px;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+}
