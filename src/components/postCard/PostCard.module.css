@@ -56,16 +56,16 @@
 }
 
 .blockPictures {
-    align-self: center;
     margin-bottom: 10px;
 }
 
-.blockPictures img {
-    display: flex;
-    max-width: 100%;
+.postImage {
+    width: 100%;
+    max-width: 500px;
     height: auto;
+    max-height: 600px;
     border-radius: 6px;
-    max-height: 300px;
+    object-fit: cover;
 }
 
 .likeCommentBlock {

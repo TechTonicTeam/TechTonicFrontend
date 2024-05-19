@@ -14,7 +14,8 @@ import comment from '../icons/comment.svg'
 import arrowDown from '../icons/arrowDown.png'
 import search from '../icons/search.svg'
 import send from '../icons/sendButton.svg'
-import clip from '../icons/uiw_paper-clip.svg'
+import cross from '../icons/cross.svg'
+import clip from '../icons/clip.svg'
 
 const images = {
     logo,
@@ -33,6 +34,7 @@ const images = {
     arrowDown,
     search,
     send,
+    cross,
     clip
 }
 

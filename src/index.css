@@ -28,3 +28,8 @@ ul {
   margin: 0;
   padding-inline-start: 0;
 }
+
+.swiper-slide img {
+  display: block;
+  margin: 0 auto;
+}
