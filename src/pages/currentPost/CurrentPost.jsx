@@ -20,14 +20,16 @@ function CurrentPost() {
     const postId = useParams()
 
     async function sendCommentHandler() {
-        const date = new Date()
-        const response = await $api.post('/comment', {
-            title: commentInput.value,
-            timestamp: date.toLocaleString('en-US', {timeZone: 'Europe/Moscow'}),
-            user_id: user_id,
-            post_id: post.id
-        })
-        setPost(response.data)
+        if (commentInput.value) {
+            const date = new Date()
+            await $api.post('/comment', {
+                title: commentInput.value,
+                timestamp: date.toLocaleString('en-US', {timeZone: 'Europe/Moscow'}),
+                user_id: user_id,
+                post_id: post.id
+            })
+            fetching()
+        }
     }
 
     useEffect(() => {

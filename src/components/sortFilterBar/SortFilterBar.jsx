@@ -1,7 +1,5 @@
-import React, {useCallback, useMemo, useState} from 'react';
-import getImage from "../../utils/getImage";
+import React from 'react';
 import styles from './SortFilterBar.module.css'
-import useInput from "../../hooks/useInput";
 import SortDropDown from "../sortDropDown/SortDropDown";
 import FilterDropDown from "../filterDropDown/FilterDropDown";
 

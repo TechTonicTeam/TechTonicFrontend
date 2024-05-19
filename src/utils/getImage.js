@@ -14,6 +14,8 @@ import comment from '../icons/comment.svg'
 import arrowDown from '../icons/arrowDown.png'
 import search from '../icons/search.svg'
 import send from '../icons/sendButton.svg'
+import cross from '../icons/cross.svg'
+import clip from '../icons/clip.svg'
 
 const images = {
     logo,
@@ -31,7 +33,9 @@ const images = {
     comment,
     arrowDown,
     search,
-    send
+    send,
+    cross,
+    clip
 }
 
 function getImage(key) {

@@ -15,7 +15,7 @@ export const userRoutes = [
     {
         path: '/post/:post_id',
         element: <CurrentPost/>
-    }
+    },
 ]
 
 export const adminRoutes = [
