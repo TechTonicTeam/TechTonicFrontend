@@ -33,3 +33,9 @@ ul {
   display: block;
   margin: 0 auto;
 }
+
+.swiper-button-next:after, .swiper-button-prev:after {
+  color: black;
+  font-size: 30px !important;
+}
+

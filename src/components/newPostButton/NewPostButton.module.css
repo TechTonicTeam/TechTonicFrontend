@@ -8,6 +8,7 @@
     right: 20px;
     bottom: 20px;
     cursor: pointer;
+    z-index: 999;
 }
 
 .newPostButton::after, .newPostButton::before {

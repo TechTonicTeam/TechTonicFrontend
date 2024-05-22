@@ -8,8 +8,8 @@ import TwoCommentList from "../twoCommentList/TwoCommentList";
 import {Link} from "react-router-dom";
 import Swiper from 'swiper';
 import 'swiper/css';
-import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
+import 'swiper/css/navigation';
+import {Navigation} from 'swiper/modules';
 const PostCard = ({post, openPopComm, commentButton}) => {
     const api_url = 'http://localhost:5000/'
     const [timestamp, setTimestamp] = useState('')
@@ -27,12 +27,13 @@ const PostCard = ({post, openPopComm, commentButton}) => {
     }
 
     new Swiper('.swiper', {
-        modules: [Pagination],
+        modules: [Navigation],
         slidesPerView: 1,
         spaceBetween: 10,
         loop: true,
-        pagination: {
-            el: '.swiper-pagination',
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
         },
     });
 
@@ -91,7 +92,8 @@ const PostCard = ({post, openPopComm, commentButton}) => {
                                 (<></>)
                         }
                     </div>
-                    <div className="swiper-pagination"></div>
+                    <div className="swiper-button-prev"></div>
+                    <div className="swiper-button-next"></div>
                 </div>
             </div>
 

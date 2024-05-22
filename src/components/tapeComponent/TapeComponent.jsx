@@ -30,7 +30,7 @@ const TapeComponent = () => {
                 switchTape
                     ?
                     <div>
-                        Лента голсований пока в разработке
+                        Лента голосований пока в разработке
                         <LoadingComponent/>
                     </div>
                     :

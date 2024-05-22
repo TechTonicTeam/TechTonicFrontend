@@ -93,6 +93,7 @@ function Login() {
                     onChange={password.onChange}
                     incorrect={correctInput}
                     setIncorrect={setCorrectInput}
+                    type='password'
                 />
 
                 <div className={styles.buttonWrapper}>
